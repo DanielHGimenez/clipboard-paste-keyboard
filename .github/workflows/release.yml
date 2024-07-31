@@ -1,0 +1,48 @@
+name: Release CI
+
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      version:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Release version'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      description:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Release description'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build source code
+      run: make build
+
+    - name: Create release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ inputs.version }}
+        release_name: v${{ inputs.version }}
+        body: ${{ inputs.description }}
+
+    - name: Upload Release Asset
+      uses: actions/upload-artifact@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+      with:
+        name: cbpk 
+        path: ./bin
