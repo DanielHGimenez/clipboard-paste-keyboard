@@ -12,7 +12,7 @@ import (
 func main() {
 	cmd := cli.NewApp()
 	cmd.Name = "CBPK"
-	cmd.Usage = "Do the keyboard writes content of clipboard"
+	cmd.Usage = "Does the keyboard write content of the clipboard"
 
 	cmd.Commands = []cli.Command{
 		{
