@@ -1,5 +1,8 @@
 # clipboard-paste-keyboard
 
+[![GitHub Downloads (specific asset, latest release)](https://img.shields.io/github/downloads/DanielHGimenez/clipboard-paste-keyboard/latest/bin.zip?style=for-the-badge&label=download%20latest&labelColor=green&color=grey)](https://github.com/DanielHGimenez/clipboard-paste-keyboard/releases/latest/download/bin.zip)
+
+
 ## Summary
 
 `clipboard-paste-keyboard` is a cross-platform command-line tool to write clipboard content using the keyboard. It can be used to write the clipboard content through RDS, or any software that disable pasting (Ctrl + V).
