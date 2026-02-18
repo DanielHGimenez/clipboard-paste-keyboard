@@ -1,3 +1,4 @@
+.PHONY: build
 build:
 	GOOS=windows GOARCH=amd64 go build -o bin/cbpk-amd64.exe # 64-bit
 	GOOS=windows GOARCH=386 go build -o bin/cbpk-386.exe # 32-bit

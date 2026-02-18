@@ -22,10 +22,13 @@ func main() {
 
 	cmd.Commands = []cli.Command{
 		{
-			Name: "write",
+			Name:        "write",
+			Usage:       "types clipboard content via simulated keystrokes (--delay N to wait N seconds)",
+			Description: "Use --delay N to wait N seconds before typing begins",
 			Flags: []cli.Flag{
 				cli.IntFlag{
 					Name:     "delay",
+					Usage:    "number of seconds to wait before typing begins",
 					Required: false,
 				},
 			},
@@ -69,7 +72,7 @@ func writeClipboard(c *cli.Context) {
 		// otherwise fall through to sendkeys
 	}
 
-	// Fallback: original behavior (unchanged for Windows) 
+	// Fallback: original behavior (unchanged for Windows)
 	kb, err := sendkeys.NewKBWrapWithOptions(sendkeys.Noisy)
 	if err != nil {
 		log.Fatal(err)
